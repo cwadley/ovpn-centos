@@ -5,7 +5,7 @@ source settings.sh
 yum install -y git
 yum install -y yum-utils device-mapper-persistent-data lvm2
 yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-yum install docker-ce
+yum install -y docker-ce
 systemctl enable docker
 systemctl start docker
 
@@ -16,4 +16,4 @@ cd ..
 
 mkdir /etc/openvpn
 docker run -v /etc/openvpn:/etc/openvpn --rm openvpn ovpn_genconfig -u ${protocol}://${address}:1194
-docker run --rm -it -v /etc/openvpn:/etc/openvpn myownvpn ovpn_initpki
+docker run --rm -it -v /etc/openvpn:/etc/openvpn openvpn ovpn_initpki
