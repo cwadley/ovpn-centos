@@ -1,5 +1,6 @@
 # ovpn-centos
 Scripts to set up and run OVPN in a docker container
+These scripts assume a fresh install of CentOS 7
 
 ## How to use
 1. Edit settings.sh to set protocol, server address, and port
