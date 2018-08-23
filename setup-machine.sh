@@ -15,5 +15,10 @@ docker build -t openvpn .
 cd ..
 
 mkdir /etc/openvpn
-docker run -v /etc/openvpn:/etc/openvpn --rm openvpn ovpn_genconfig -u ${protocol}://${address}:1194
+if [ $port -eq 1194 ]; then
+	docker run -v /etc/openvpn:/etc/openvpn --rm openvpn ovpn_genconfig -u ${protocol}://${address}
+else
+	docker run -v /etc/openvpn:/etc/openvpn --rm openvpn ovpn_genconfig -u ${protocol}://${address}:${port}
+fi
+
 docker run --rm -it -v /etc/openvpn:/etc/openvpn openvpn ovpn_initpki
